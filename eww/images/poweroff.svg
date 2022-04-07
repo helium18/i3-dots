@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="power-off-solid.svg"
+   width="48"
+   height="48"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter827"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feColorMatrix
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 -0.21 -0.72 -0.07 2 0 "
+         result="color2"
+         id="feColorMatrix825" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="10.424358"
+     inkscape:cx="38.323704"
+     inkscape:cy="30.505476"
+     inkscape:window-width="1884"
+     inkscape:window-height="970"
+     inkscape:window-x="18"
+     inkscape:window-y="92"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path
+     d="m 26.92666,24.737832 c 0,1.686505 -1.362542,3.049041 -3.049047,3.049041 -1.686504,0 -3.049042,-1.362536 -3.049042,-3.049041 V 3.3945037 c 0,-1.6836437 1.362538,-3.04904751 3.049042,-3.04904751 1.686505,0 3.049047,1.36540381 3.049047,3.04904751 z m -19.8187985,0 c 0,9.261476 7.5082765,16.769754 16.7697515,16.769754 9.261482,0 16.769759,-7.508278 16.769759,-16.769754 0,-5.183382 -2.353487,-9.823647 -6.050457,-12.901281 C 33.301072,10.75986 33.120039,8.8380068 34.196729,7.5431144 35.273425,6.248221 37.198138,6.0719468 38.493982,7.148643 c 5.030924,4.192438 8.25148,10.519211 8.25148,17.503432 0,12.710711 -10.242889,22.953601 -22.867849,22.953601 -12.624953,0 -22.8678466,-10.24289 -22.8678466,-22.953601 0,-6.984221 3.2157927,-13.310994 8.2514842,-17.503432 C 10.557093,6.0719468 12.481807,6.248221 13.558503,7.5431144 14.549442,8.8380068 14.454154,10.75986 13.15831,11.836551 9.4613447,14.914185 7.1078615,19.55445 7.1078615,24.737832 Z"
+     id="path2"
+     style="stroke-width:0.0952826;filter:url(#filter827)" />
+</svg>

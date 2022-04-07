@@ -1,0 +1,109 @@
+#!/bin/bash
+
+get_volume() {
+    vol=$(amixer -D pulse sget Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1) 
+}
+
+is_mute() {
+    status=$(amixer -D pulse sget Master | grep '%' | grep -oE '[^ ]+$' | grep off)
+}
+
+icon() {
+    get_volume
+    is_mute
+    
+    if [[ $vol == 0 || $status ]]; then 
+        echo "婢 muted"
+    
+    elif [[ $vol < 20 ]]; then
+        echo "奄 $vol"
+        
+    elif [[ $vol < 60 ]]; then
+        echo "奔 $vol"
+    
+    else 
+        echo "墳 $vol"
+        
+    fi
+}
+
+send_notification() {
+    get_volume
+    is_mute
+
+    # When muted, send muted notif
+    if [[ $status || "$vol" == "0" ]] ; then
+    
+        bar="Muted"
+
+        # Send the notification
+        dunstify -t 5000 -i /home/helium/.icons/Tela-dark/16/panel/audio-volume-muted-panel.svg -r 2593 -u normal -h string:fgcolor:\#cccccc "$bar"
+        
+    else 
+
+        # Make the bar with the special character ─ (it's not dash -)
+        # https://en.wikipedia.org/wiki/Box-drawing_character
+        bar=$(seq -s "─" $(($vol / 5)) | sed 's/[0-9]//g')
+
+        # Send the notification
+        dunstify -t 5000 -i /home/helium/.icons/Tela-dark/16/panel/audio-volume-high-panel.svg -r 2593 -u normal -h string:fgcolor:\#cccccc "$vol  $bar"
+
+        # play volume 
+        canberra-gtk-play -i audio-volume-change -d "changeVolume"
+
+    fi
+
+}
+
+update() {
+    get_volume
+    is_mute
+    
+    # When muted set the slider level in the volume widget to 0
+    if [[ $status ]]; then
+        eww update vol_level="0"
+    
+    else
+        eww update vol_level="$vol"
+   
+    fi
+
+    # vol_with_icon refers to the button on the bar which displays the info
+    vol_with_icon=`icon`
+    eww update vol_with_icon="$vol_with_icon"
+
+}
+
+if [[ "$1" == "up" ]]; then
+    amixer -D pulse sset Master 5%+
+    update # updating before sending notif to prevent delay of bar vol btn 
+    send_notification
+
+elif [[ "$1" == "down" ]]; then
+    amixer -D pulse sset Master 5%-
+    update
+    send_notification
+
+# Not sending a notification for this cus this is meant for a slider. Would create conflict between notif & widget
+elif [[ "$1" == "set" ]]; then
+    amixer -D pulse sset Master "$2"%
+    update
+
+elif [[ "$1" == "mute" ]]; then
+    amixer -D pulse sset Master toggle
+    update
+    send_notification
+
+elif [[ "$1" == "icon" ]]; then 
+    icon
+    update
+
+else
+    get_volume
+    update
+    echo "$vol"
+
+fi
+
+# Once all's done, update the volume levels (so that we don't have to call `volume update` externally)
+# update # Commented out, we don't want to send the notif before updating, it causes lag

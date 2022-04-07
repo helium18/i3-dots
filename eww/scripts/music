@@ -1,0 +1,60 @@
+#!/bin/bash
+
+player() {
+    playerctl metadata | grep title | awk '{print ($1)}'
+}
+
+track() {
+    track=$(playerctl metadata title)
+    
+    # Echo the track if it is present
+    if [[ $track != "" ]] ; then
+        echo " $track"
+    
+    else 
+        echo "Nothing playing"
+    fi
+}
+
+next() {
+    playerctl next
+}
+
+prev() {
+    playerctl previous
+}
+
+pause() {
+    playerctl pause
+}
+
+play() {
+    playerctl play
+}
+
+play_pause() {
+    playerctl play-pause
+}
+
+if [[ "$1" == "--player" ]]; then 
+    player
+
+elif [[ "$1" == "--track" ]]; then 
+    track
+    
+elif [[ "$1" == "--next" ]]; then
+    next
+    
+elif [[ "$1" == "--prev" ]]; then
+    prev
+
+elif [[ "$1" == "--pause" ]]; then
+    pause
+    
+elif [[ "$1" == "--play" ]]; then
+    play
+    
+elif [[ "$1" == "--play-pause" ]]; then
+    play_pause
+
+fi

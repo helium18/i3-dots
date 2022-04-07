@@ -1,0 +1,64 @@
+#!/bin/bash
+
+workspace="$1"
+
+move_to() {
+    i3-msg workspace number $workspace
+    update
+    # $HOME/.config/scripts/wsanimation/scripts/wsanimation
+}
+
+get_name() {
+    workspace=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)
+}
+
+update() {
+    eww update ws=$workspace
+}
+
+permit() {
+    if [[ $workspace != 1 && $workspace != 6 ]] ; then
+        perm="true"
+
+    elif [[ $workspace == 1 && "$1" == "next" ]] ; then
+        perm="true"
+
+    elif [[ $workspace == 6 && "$1" == "prev" ]] ; then
+        perm="true"
+
+    else
+        perm="false"
+
+    fi
+}
+
+if [[ $workspace == "next" ]] ; then
+    get_name
+
+    permit next
+    if [[ $perm == "true" ]] ; then
+        workspace=$((workspace + 1))
+        move_to
+
+    else 
+        echo "Not permitted, reached the end [Workspace no. $workspace]"
+
+    fi
+
+elif [[ $workspace == "prev" ]] ; then
+    get_name
+
+    permit prev
+    if [[ $perm == "true" ]] ; then
+        workspace=$((workspace - 1))
+        move_to
+
+    else 
+        echo "Not permitted, reached the end [Workspace no. $workspace]"
+
+    fi
+
+else 
+    move_to
+
+fi

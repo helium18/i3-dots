@@ -1,0 +1,55 @@
+* {
+    background-color:      #2c2c2c;
+    text-color:           #cccccc;
+    font:            "JetbrainsMono Nerd Font 14";
+}
+
+window {
+    anchor:     center;
+    location:   center;
+    width:      40%;
+    padding:    50px;
+    children:   [ horibox ];
+    border-radius: 20px;
+    border: 3px;
+    border-color: #3d3d3d;
+}
+
+horibox {
+    orientation: vertical;
+    children:  [ entry, listview ];
+}
+
+listview {
+    layout:     vertical;
+    spacing:    5px;
+    lines:      6;
+}
+
+entry {
+    border-radius: 14px;
+    border: 5px;
+    background-color: #3d3d3d;
+    padding: 13px;
+    expand:     false;
+    width:      10em;
+    margin: 0px 0px 20px 0px;
+}
+
+element {
+    padding: 5px;
+    margin: 5px;
+}
+
+element selected {
+    background-color: #9a9a9a;
+    text-color: black;
+    border-radius: 10px;
+}
+
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+

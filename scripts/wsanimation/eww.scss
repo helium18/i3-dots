@@ -1,0 +1,17 @@
+.container {
+  background-color: #2c2c2c;
+  padding: 10px;
+}
+
+.active {
+  background-color: #3b3b3b;
+}
+
+.inactive {
+  background-color: #2f2f2f;
+}
+
+.active,
+.inactive {
+  padding: 20px 10px;
+}

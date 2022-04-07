@@ -1,0 +1,104 @@
+* {
+  font-family: "JetbrainsMono Nerd Font";
+  font-size: 16px;
+  color: #cccccc;
+}
+
+.right-box,
+.left-box,
+.center-box {
+  padding: 6px 4px;
+}
+
+.music-btn,
+.calendar-box,
+.battery-btn,
+.time-btn,
+.workspace,
+.volume-btn,
+.wifi-btn,
+.exit-btn,
+.sys-tray-btn {
+  background-color: #3d3d3d;
+  border-radius: 10px;
+  margin: 0px 5px;
+}
+
+.workspace {
+  padding: 5px 13px;
+}
+
+.media-ctrls,
+.prev,
+.play-pause,
+.next {
+  background-color: #2c2c2c;
+  padding: 0px;
+  border-radius: 10px;
+}
+
+.media-ctrls:hover {
+  border-color: #212121;
+}
+
+.battery {
+  padding: 15px 15px;
+}
+
+.battery-progress {
+  color: #9f9f9f;
+}
+
+.calendar {
+  background-color: #2c2c2c;
+  padding: 15px 10px;
+  border-color: #2c2c2c;
+}
+
+.calendar:selected {
+  background-color: #575757;
+}
+
+.calendar-box {
+  background-color: #2c2c2c;
+  border-color: #2c2c2c;
+  padding: 0px;
+}
+
+.music-box {
+  padding: 5px;
+}
+
+.music-info,
+.m1,
+.m2 {
+  padding: 3px 1px;
+}
+
+.m1 {
+  font-size: 12px;
+}
+
+.volume-window {
+  padding: 10px 30px;
+}
+
+.volume-info {
+  background-color: #2c2c2c;
+  padding: 5px 5px;
+  margin: 5px;
+}
+
+.poweroff,
+.logoff,
+.reboot {
+  padding: 20px 25px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}
+
+.exit-window {
+  padding: 10px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}

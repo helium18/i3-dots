@@ -1,0 +1,57 @@
+#!/bin/bash
+
+get_volume() {
+    vol=$(amixer -D pulse sget Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1) 
+}
+
+is_mute() {
+    status=$(amixer -D pulse sget Master | grep '%' | grep -oE '[^ ]+$' | grep off)
+}
+
+if [[ "$1" == "up" ]]; then
+    amixer -D pulse sset Master 5%+
+
+elif [[ "$1" == "down" ]]; then
+    amixer -D pulse sset Master 5%-
+
+elif [[ "$1" == "set" ]]; then
+    amixer -D pulse sset Master "$2"%
+
+elif [[ "$1" == "mute" ]]; then
+    amixer -D pulse sset Master toggle
+
+elif [[ "$1" == "update" ]]; then
+    get_volume
+    is_mute
+    
+    if [[ $status ]]; then
+        eww update vol_level="0"
+    
+    else
+        eww update vol_level="$vol"
+    
+    fi
+        
+elif [[ "$1" == "icon" ]]; then 
+    get_volume
+    is_mute
+    
+    if [[ $vol == 0 || $status ]]; then 
+        echo "婢 muted"
+    
+    elif [[ $vol < 20 ]]; then
+        echo "奄 $vol"
+        
+    elif [[ $vol < 60 ]]; then
+        echo "奔 $vol"
+    
+    else 
+        echo "墳 $vol"
+        
+    fi
+
+else
+    get_volume
+    echo "$vol"
+
+fi

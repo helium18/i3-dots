@@ -1,0 +1,250 @@
+; --- Variables ---
+
+; time
+(defpoll time :interval "1s" "date +\"%I:%M\"")
+
+; calendar
+(defpoll day :interval "1s" "date +\"%e\"")
+(defpoll month :interval "1s" "date +\%m\"")
+(defpoll year :interval "1s" "date +\%Y\"")
+
+; battery
+(defpoll battery_status :interval "5s" "./scripts/battery --status")
+(defpoll battery_with_icon :interval "1s" "./scripts/battery --battery-with-icon")
+(defpoll battery :interval "1s" "./scripts/battery --battery")
+(defvar battery_rem "")
+
+; wifi
+(defpoll wifi :interval "5s" "./scripts/wifi")
+(defpoll wifi_icon :interval "5s" "./scripts/wifi --icon")
+
+; music
+(defpoll track :interval "2s" "./scripts/music --track")
+(defpoll player :interval "2s" "./scripts/music --player")
+
+; workspaces
+(defvar ws "1")
+
+; volume
+(defvar vol_with_icon "")
+(defvar vol_level "0")
+
+; exit
+(defvar poweroff_icon "images/poweroff.svg")
+(defvar logoff_icon "images/logoff.svg")
+(defvar reboot_icon "images/reboot.svg")
+
+; --- Bar widget and sections ---
+
+; bar
+(defwidget bar[]
+  (centerbox :orientation "h" :class "bar-widget"
+    (left_box)
+    (center_box)
+    (right_box)
+  )
+)
+
+; left box
+(defwidget left_box[]
+  (box :orientation "h" :class "left-box" :space-evenly true :halign "start" :spacing 5
+    (sys_tray)
+    (workspaces)
+  ))
+
+; center box
+(defwidget center_box[]
+  (box :orientation "h" :class "center-box" :space-evenly true :halign "center" :spacing 5
+    (time)
+  )
+)
+
+; right box
+(defwidget right_box[]
+  (box :orientation "h" :class "right-box" :space-evenly false :halign "end"
+    (music)
+    (volume)
+    (battery)
+    (wifi)
+    (exit)
+  )
+)
+
+; --- Widgets ---
+
+; workspaces
+(defwidget workspaces[]
+  (box :class "workspaces" :orientation "h" :space-evenly true :halign "start" :spacing 5
+    (label :text ws :class "workspace")
+  )
+)
+
+; battery
+(defwidget battery[]
+  (box :class "battery-hover" :orientation "h"
+    (button :class "battery-btn" :onclick "eww open battery_hover --toggle && ./scripts/battery --remaining" battery_with_icon)
+  )
+)
+
+; battery window
+(defwidget battery_window[]
+  (box :class "battery" :orientation "v"
+    (circular-progress :class "battery-progress" :value battery :thickness 5 :start-at 26 :clockwise false)
+    (label :text battery_status)
+    (label :text battery_rem)
+  )
+)
+
+; wifi
+(defwidget wifi[]
+  (button
+    :class "wifi-btn"
+    :tooltip wifi
+    :onclick "gnome-control-center wifi"
+  wifi_icon)
+)
+
+; time
+(defwidget time[]
+  (box :class "time" :orientation "h"
+    (button :class "time-btn" :onclick "eww open calendar --toggle" " ${time}")
+  )
+)
+
+; time window (calendar)
+(defwidget calendar_window[]
+  (box :class "calendar-box" :orientation "v"
+    (calendar :class "calendar"
+      :day day
+      :month month
+      :year year
+    )
+  )
+)
+
+; music
+(defwidget music_buttons[]
+  (box :class "music-box" :orientation "v"
+    (box :class "music-info" :orientation "v"
+      (label :text player :class "m1")
+      (label :text track :limit-width 15 :class "m2")
+    )
+    (box :class "media-ctrls" :orientation "h"
+      (button :class "prev" :onclick "./scripts/music --prev" "玲")
+      (button :class "play-pause" :onclick "./scripts/music --play-pause" "")
+      (button :class "next" :onclick "./scripts/music --next" "怜")
+      
+    )
+  )
+)
+
+; music window
+(defwidget music[]
+  (button :class "music-btn"
+    :onclick "eww open music_hover --toggle" ""
+  )
+)
+
+; volume
+(defwidget volume[]
+  (button :class "volume-btn"
+    :onclick "eww open volume_window --toggle && ./../scripts/volume update" vol_with_icon
+  )
+)
+
+; volume window
+(defwidget volume_win[]
+  (box :class "volume-window" :orientation "v"
+    (button :class "volume-info" :onclick "./../scripts/volume mute" vol_with_icon)
+    (scale :value vol_level :min 0 :max 100 :onchange "./../scripts/volume set {}")
+  )
+)
+
+; exit
+(defwidget exit[]
+  (button :class "exit-btn"
+    :onclick "eww open exit_screen --toggle" ""
+  )
+)
+
+;exit window
+(defwidget exit_window[]
+  (box :class "exit-window" :orientation "v"
+    (button :class "logoff" :onclick "i3-msg exit" " Logout")
+    (button :class "poweroff" :onclick "poweroff" " Poweroff")
+    (button :class "reboot" :onclick "reboot" "累 Reboot")
+  )
+)
+
+; sys tray
+(defwidget sys_tray[]
+  (button :class "sys-tray-btn"
+    :onclick "rofi -modi drun,run -show drun"
+    ""
+  )
+)
+
+; --- Windows ---
+
+; main bar
+(defwindow mainbar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%" :y "0%" :width "90%" :height "10px")
+  :anchor "top center"
+  :reserve (struts :side "top" :distance "4%")
+  (bar)
+)
+
+; music info
+(defwindow music_hover
+  :monitor 0
+  :windowtype "normal"
+  :geometry (geometry :x "80%" :y "6%" :width "11%" :height "20px")
+  :anchor "top center"
+  :reserve (struts :side "top" :distance "4%")
+  (music_buttons)
+)
+
+; battery info
+(defwindow battery_hover
+  :monitor 0
+  :windowtype "normal"
+  :geometry (geometry :x "87%" :y "6%" :width "12%" :height "10%")
+  :anchor "top center"
+  :reserve (struts :side "top" :distance "4%")
+  (battery_window)
+)
+
+; calendar
+(defwindow calendar
+  :monitor 0
+  :windowtype "normal"
+  :wmignore "true"
+  :geometry (geometry :x "40%" :y "6%" :width "14%" :height "10%")
+  :anchor "top center"
+  :reserve (struts :side "top" :distance "5%")
+  (calendar_window)
+)
+
+; volume info
+(defwindow volume_window
+  :monitor 0
+  :windowtype "normal"
+  :geometry (geometry :x "82%" :y "6%" :width "12%" :height "10%")
+  :anchor "top center"
+  :reserve (struts :side "top" :distance "4%")
+  (volume_win)
+)
+
+; poweroff, reboot, logoff screen
+(defwindow exit_screen
+  :monitor 0
+  :windowtype "normal"
+  :geometry (geometry :x "90%" :y "6%" :width "4%" :height "1%")
+  :anchor "top center"
+  :reserve (struts :side "top" :distance "4%")
+  (exit_window)
+)
+
+

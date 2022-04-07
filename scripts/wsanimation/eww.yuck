@@ -1,0 +1,26 @@
+(defvar class1 "")
+(defvar class2 "")
+(defvar class3 "")
+(defvar class4 "")
+(defvar class5 "")
+(defvar class6 "")
+
+(defwindow wsanim
+  :monitor 0
+  :windowtype "normal"
+  :geometry (geometry :x "1%" :y "7%" :width "7%" :height "40%")
+  :anchor "center"
+  :reserve (struts :side "top" :distance "4%")
+  (bux)
+)
+
+(defwidget bux[]
+  (box :class "container" :orientation "v"
+    (label :class class1 :text "1")
+    (label :class class2 :text "2")
+    (label :class class3 :text "3")
+    (label :class class4 :text "4")
+    (label :class class5 :text "5")
+    (label :class class6 :text "6")
+  )
+)

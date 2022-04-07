@@ -1,0 +1,74 @@
+#!/bin/bash
+
+BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+
+battery_percentage() {
+    bat_per=$(cat /sys/class/power_supply/${BAT}/capacity)
+}
+
+charging_status() {
+    status=$(cat /sys/class/power_supply/${BAT}/status)
+}
+
+time_remaining() {
+    energy=$(cat /sys/class/power_supply/$BAT/energy_now)
+    power=$(cat /sys/class/power_supply/$BAT/power_now)
+    
+    # Power = Work / Time ; Work = energy 
+    
+    float_hrs=$(echo "${energy}/${power}" | bc -l)
+    
+    # remove the decimal place
+    hrs=$(echo "${float_hrs}/1" | bc)
+    # get the decimal place and multiply it by 60
+    mins=$(awk "BEGIN{print int((${float_hrs} % 1) * 60)}")
+
+    eww update battery_rem="$hrs hrs $mins mins left"
+    echo "$hrs hrs $mins mins left"
+}
+
+if [[ "$1" == "--battery-with-icon" || "$1" == "-b" ]]; then 
+    battery_percentage
+    charging_status
+
+    if [[ $status == "Discharging" ]] ; then
+
+        if [[ $bat_per == "100" ]] ; then
+            icon=""
+
+        elif [[ $bat_per < 20 ]] ; then
+            icon=""
+    
+        elif [[ $bat_per < 40 ]] ; then
+            icon=""
+        
+        elif [[ $bat_per < 60 ]] ; then
+            icon=""
+
+        elif [[ $bat_per < 80 ]] ; then
+            icon=""
+        
+        else
+            icon=""
+        
+        fi
+    
+    else 
+        icon=""
+
+    fi
+    
+    echo "$icon $bat_per%"
+
+elif [[ "$1" == "--status" || "$1" == "-s" ]] ; then 
+    charging_status
+    echo "$status"
+
+elif [[ "$1" == "--battery" ]] ; then
+    battery_percentage
+    echo "$bat_per"
+
+elif [[ "$1" == "--remaining" ]] ; then
+    time_remaining
+
+fi

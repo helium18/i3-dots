@@ -1,0 +1,18 @@
+#!/bin/bash
+
+wifi_name=$(nmcli c | sed -n '2 p' | awk '{print ($1)}')
+status=$(nmcli g | grep -oE "disconnected")
+
+if [[ $status ]] ; then 
+    icon="睊"
+
+else 
+    icon="直"
+
+fi
+
+if [[ "$1" == "--icon" ]]; then 
+    echo "$icon"
+else 
+    echo "$wifi_name"
+fi

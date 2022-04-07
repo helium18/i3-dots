@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="right-from-bracket-solid.svg"
+   width="48"
+   height="48"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter948"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feColorMatrix
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 -0.21 -0.72 -0.07 2 0 "
+         result="fbSourceGraphic"
+         id="feColorMatrix946" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix968" />
+      <feColorMatrix
+         id="feColorMatrix970"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 -0.21 -0.72 -0.07 2 0 "
+         result="fbSourceGraphic"
+         in="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix990" />
+      <feColorMatrix
+         id="feColorMatrix992"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 -0.21 -0.72 -0.07 2 0 "
+         result="color2"
+         in="fbSourceGraphic" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="5.783902"
+     inkscape:cx="30.169944"
+     inkscape:cy="43.223416"
+     inkscape:window-width="1884"
+     inkscape:window-height="970"
+     inkscape:window-x="18"
+     inkscape:window-y="92"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path
+     d="m 9.252775,43.778354 h 5.822999 c 1.610425,0 2.911499,-1.301073 2.911499,-2.911498 0,-1.610426 -1.301074,-2.911501 -2.911499,-2.911501 H 9.252775 c -1.6076979,0 -2.911505,-1.303808 -2.911505,-2.911498 V 11.751856 c 0,-1.607697 1.3038071,-2.9114991 2.911505,-2.9114991 h 5.822999 c 1.610425,0 2.911499,-1.3038083 2.911499,-2.9114985 0,-1.6076979 -1.301074,-2.9115064 -2.911499,-2.9115064 H 9.252775 c -4.8239948,0 -8.73450323,3.9105095 -8.73450323,8.734504 v 23.292001 c 0,4.822169 3.91050843,8.734497 8.73450323,8.734497 z M 46.447182,21.805627 33.336333,9.4317557 c -0.634615,-0.5984999 -1.56493,-0.7619981 -2.365594,-0.4179849 -0.800936,0.3454676 -1.32018,1.1345762 -1.32018,2.0062032 l -0.0083,6.550878 -11.645996,-9.2e-5 c -1.609516,0 -2.913324,1.303809 -2.913324,2.911499 v 5.822999 c 0,1.607696 1.304718,2.911506 2.913324,2.911506 l 11.645996,8.6e-5 0.0083,6.468989 c 0,0.871448 0.519244,1.660464 1.32018,2.006205 0.800941,0.344013 1.731436,0.180514 2.365594,-0.417979 L 46.447182,24.900188 c 0.873453,-0.738066 0.873453,-2.266603 0,-3.094561 z"
+     id="path2"
+     style="stroke-width:0.0909841;filter:url(#filter948)" />
+</svg>

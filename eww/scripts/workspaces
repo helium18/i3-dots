@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# active_index=$(wmctrl -d | grep '*' | cut -d ' ' -f1)
+# active=$(echo "${active_index} + 1" | bc)
+# 
+# if [[ "$1" == "--icon" ]]; then 
+#     
+#     if [[ "$2" == $active ]]; then
+#         echo ""
+#     
+#     else 
+#         echo ""
+#         
+#     fi
+# 
+# # elif [[ "$1" == "--switch" ]]; then
+# #     num="$2"
+# #     
+# #     wmctrl -s $num 
+# #     
+# #     for i in {0..5}
+# #         do 
+# #             icon=$(./workspaces --icon $i)
+# #             eww update ws$i=$icon
+# #         done
+# fi  
+
+num=$(i3-msg -t get_workspaces | jq '.[] | select(.focused).num')
+echo "$num"
