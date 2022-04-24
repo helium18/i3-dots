@@ -9,7 +9,7 @@
 (defpoll year :interval "1s" "date +\%Y\"")
 
 ; battery
-(defpoll battery_status :interval "5s" "./scripts/battery --status")
+(defvar battery_status "")
 (defpoll battery_with_icon :interval "1s" "./scripts/battery --battery-with-icon")
 (defpoll battery :interval "1s" "./scripts/battery --battery")
 (defvar battery_rem "")
@@ -82,7 +82,7 @@
 ; battery
 (defwidget battery[]
   (box :class "battery-hover" :orientation "h"
-    (button :class "battery-btn" :onclick "eww open battery_hover --toggle && ./scripts/battery --remaining" battery_with_icon)
+    (button :class "battery-btn" :onclick "eww open battery_hover --toggle && ./scripts/battery --remaining && ./scripts/battery --status" battery_with_icon)
   )
 )
 
@@ -156,7 +156,7 @@
 (defwidget volume_win[]
   (box :class "volume-window" :orientation "v"
     (button :class "volume-info" :onclick "./../scripts/volume mute" vol_with_icon)
-    (scale :value vol_level :min 0 :max 100 :onchange "./../scripts/volume set {}")
+    (scale :value vol_level :min 0 :max 101 :onchange "./../scripts/volume set {}")
   )
 )
 

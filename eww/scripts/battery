@@ -8,6 +8,7 @@ battery_percentage() {
 
 charging_status() {
     status=$(cat /sys/class/power_supply/${BAT}/status)
+    eww update battery_status=$status
 }
 
 time_remaining() {

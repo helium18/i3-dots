@@ -51,6 +51,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'godlygeek/tabular'
 Plug 'ap/vim-css-color'
 Plug 'bhurlow/vim-parinfer'
@@ -74,7 +75,7 @@ let g:airline#extensions#tabline#enabled = 0
 " let g:tmuxline_powerline_separators = 0
 let g:airline_theme = 'minimalist'
 
-" Enable tender colorscheme 
+" Enable tender
 colorscheme tender
 
 " True color support 
