@@ -1,0 +1,21 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Use custom format
+format="[\uE0B6$directory\uE0B4](bg: cyan) $git_branch[](bg: green) "
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# Remove nodejs 
+[nodejs]
+disabled = true
+
+[directory]
+format = "[⯁ $path](bg:cyan fg:black bold)"
+
+[git_branch]
+format = "[\uE0B6](bg: green)[on $symbol$branch](bg:green fg:black bold)[\uE0B4](bg: green) "
+symbol = "שׂ "
+
