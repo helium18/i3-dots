@@ -7,6 +7,12 @@ set fish_cursor_insert line
 set fish_cursor_replace_one underscore
 set fish_cursor_visual block
 
+set -U fish_user_paths /home/helium/.local/bin
+set -U fish_user_paths /home/helium/Vault/code/sexycode
+set -U fish_user_paths /home/helium/.config/scripts
+set -U fish_user_paths /home/helium/Vault/code/bash
+set -U fish_user_paths /home/helium/Vault/Programs/color-scripts/color-scripts
+
 set -U fish_color_autosuggestion      brwhite
 set -U fish_color_cancel              -r
 set -U fish_color_command             brgreen
@@ -32,13 +38,6 @@ set -U fish_pager_color_completion    normal
 set -U fish_pager_color_description   yellow
 set -U fish_pager_color_prefix        'white' '--bold' '--underline'
 set -U fish_pager_color_progress      'brwhite' '--background=cyan'
-
-set -U fish_user_paths /home/helium/.local/bin
-set -U fish_user_paths /home/helium/.config/rofi/bin/
-set -U fish_user_paths /home/helium/Vault/code/sexycode
-set -U fish_user_paths /home/helium/.config/scripts
-set -U fish_user_paths /home/helium/Vault/code/bash
-set -U fish_user_paths /home/helium/Vault/Programs/color-scripts/color-scripts
 
 # =============================================================================
 #

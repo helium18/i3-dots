@@ -2,7 +2,7 @@
 add_newline = true
 
 # Use custom format
-format="[\uE0B6$directory\uE0B4](bg: cyan) $git_branch[](bg: green) "
+format="[\uE0B6$directory\uE0B4](fg:cyan) $git_branch[](bg: green) "
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -13,9 +13,9 @@ disabled = true
 disabled = true
 
 [directory]
-format = "[⯁ $path](bg:cyan fg:black bold)"
+format = "[⯁ $path](bg:cyan fg:#2c2c2c bold)"
 
 [git_branch]
 format = "[\uE0B6](bg: green)[on $symbol$branch](bg:green fg:black bold)[\uE0B4](bg: green) "
-symbol = "שׂ "
+symbol = "\ue725 "
 
